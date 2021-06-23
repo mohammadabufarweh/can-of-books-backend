@@ -22,7 +22,7 @@ app.use(express.json());
 
 
 // connect to mongo db using mongoose
-mongoose.connect('mongodb://localhost:27017/myFavoriteBooks',
+mongoose.connect(`${process.env.MONGO_URL}`,
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -42,8 +42,8 @@ Our routes
 
 app.get('/books', getBooks)
 app.post('/books', createBooks)
-app.put('/books/books_idx', updateBooks)
-app.delete('/books/books_idx', deleteBooks)
+app.put('/books/:books_idx', updateBooks)
+app.delete('/books/:books_idx', deleteBooks)
 
 
 app.get('/', // our endpoint name

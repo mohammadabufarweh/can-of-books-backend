@@ -35,6 +35,7 @@ const createBooks = (request, response) => {
 const updateBooks = (request, response) => {
     console.log(request.params)
     const bookIndex = request.params.books_idx;
+    console.log(bookIndex)
     const { userEmail, bookName, bookDescription, bookStatus} = request.body;
     userModel.findOne({ email: userEmail }, (error, userData) => {
         if (error) {
