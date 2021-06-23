@@ -30,27 +30,7 @@ const seedUserData = () => {
                     }
 
                 ]
-            }, {
-                email: 'ilovebanana@yahoo.com',
-                books: [
-                    {
-                        name: 'math',
-                        description: 'math',
-                        status: '1'
-                    },
-                    {
-                        name: 'biology',
-                        description: 'biology',
-                        status: '2'
-                    },
-                    {
-                        name: 'chemistry',
-                        description: 'chemistry',
-                        status: '3'
-                    }
-                ]
             });
-
     console.log(newUser);
     newUser.save();
 }

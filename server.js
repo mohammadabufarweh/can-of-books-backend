@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 const {
     getBooks,
     createBooks,
-    // updateBooks,
-    // deleteBooks
+    updateBooks,
+    deleteBooks
 } = require('./controllers/book.controller');
 
 require('dotenv').config();
@@ -42,8 +42,8 @@ Our routes
 
 app.get('/books', getBooks)
 app.post('/books', createBooks)
-// app.put('/books', updateBooks)
-// app.delete('/books', deleteBooks)
+app.put('/books/books_idx', updateBooks)
+app.delete('/books/books_idx', deleteBooks)
 
 
 app.get('/', // our endpoint name
