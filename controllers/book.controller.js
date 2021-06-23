@@ -32,8 +32,42 @@ const createBooks = (request, response) => {
     })
 }
 
+const updateBooks = (request, response) => {
+    console.log(request.params)
+    const bookIndex = request.params.books_idx;
+    const { userEmail, bookName, bookDescription, bookStatus} = request.body;
+    userModel.findOne({ email: userEmail }, (error, userData) => {
+        if (error) {
+            response.send(error)
+        } else {
+            userData.books.splice(bookIndex, 1, { name: bookName, description:bookDescription, status: bookStatus });
+            userData.save();
+            response.send(userData)
+        }
+
+    });
+}
+
+const deleteBooks = (request, response) => {
+    console.log(request.params)
+    const bookIndex = request.params.books_idx;
+    const { email } = request.query;
+
+    userModel.findOne({ email: email }, (error, userData) => {
+        if (error) {
+            response.send(error)
+        } else {
+            userData.books.splice(bookIndex, 1);
+            userData.save();
+            response.send(userData)
+        }
+
+    });
+}
 
 module.exports = {
     getBooks,
     createBooks,
+    updateBooks,
+    deleteBooks
 };
